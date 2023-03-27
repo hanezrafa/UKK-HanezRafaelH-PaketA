@@ -24,7 +24,7 @@
             <th>Nik</th>
             <th>Status</th>
             <th>Action</th>
-        </tr>
+        </tr>=
         @foreach ($pengaduan as $aduan) 
         <tr>
             <td><img src="{{ asset('storage/'.$aduan->foto) }}" alt="" style="height:100px;width:100px;"></td>

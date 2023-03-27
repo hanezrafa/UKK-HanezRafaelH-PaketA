@@ -26,7 +26,7 @@ class LoginController extends Controller
             if(Auth::user()->level == 'user') {
                 return redirect()->intended('/pengaduan')->with('success', 'Login Success!'); 
             }elseif (Auth::user()->level == 'petugas' || 'admin') {
-                return Auth::user()->level;
+                return redirect()->intended('/petugas')->with('success', 'Login Success!');
             }
             
             // return redirect()->intended('/pengaduan')->with('success', 'Login Success!');          
