@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Pengaduan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+
 
 class PengaduanController extends Controller
 {
@@ -14,7 +17,11 @@ class PengaduanController extends Controller
      */
     public function index()
     {
-        //
+        $pengaduan = Pengaduan::where('nik', Auth::user()->nik)->latest()->get();
+        //return $pengaduan;
+        return view('pengaduan.index', compact('pengaduan'));
+       
+
     }
 
     /**
@@ -24,7 +31,7 @@ class PengaduanController extends Controller
      */
     public function create()
     {
-        //
+        return view('/pengaduan.form');
     }
 
     /**
@@ -35,7 +42,25 @@ class PengaduanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'foto'=> 'required',
+            'isi_laporan'=> 'required'
+
+        ]);
+
+        // return $request->file('foto');
+
+        $image = $request->file('foto')->store('bukti_pengaduan');
+
+        $validate['foto'] = $image;
+        $validate['tgl_pengaduan'] = date('Y-m-d');
+        $validate['nik'] = Auth::user()->nik;
+
+        // <img src="{{ asset('storage/'.$pengaduan->foto) }}" alt="">
+
+        Pengaduan::create($validate);
+
+        return redirect('/pengaduan')->with('success', 'Pengaduan Berhasil');
     }
 
     /**
@@ -44,9 +69,10 @@ class PengaduanController extends Controller
      * @param  \App\Models\Pengaduan  $pengaduan
      * @return \Illuminate\Http\Response
      */
-    public function show(Pengaduan $pengaduan)
+    public function show($id)
     {
-        //
+        $pengaduan = Pengaduan::where('id_pengaduan', $id)->first(); 
+        return view('pengaduan.show', compact('pengaduan'));
     }
 
     /**
@@ -80,6 +106,9 @@ class PengaduanController extends Controller
      */
     public function destroy(Pengaduan $pengaduan)
     {
-        //
+        $pengaduan->delete();
+     
+        return redirect()->route('pengaduan.form')
+                        ->with('success','Berhasil Hapus !');
     }
 }

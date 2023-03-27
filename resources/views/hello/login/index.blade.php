@@ -1,4 +1,4 @@
-<h3>Logi Page</h3>
+<h3>Login Page</h3>
 <form action="/login" method="post">
     @csrf
     <input type="text" name="username" id="username" placeholder="Username">

@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrasiUserController;
+use App\Http\Controllers\RegistrasiController;
+use App\Http\Controllers\PengaduanController;
+use App\Http\Controllers\TanggapanController;
+use Illuminate\Auth\Events\Logout;
+
 
 
 /*
@@ -28,4 +33,9 @@ Route::post('/register', [RegistrasiController::class, 'store']);
 
 Route::get('/regis', [RegistrasiUserController::class, 'index']);
 Route::post('/regis', [RegistrasiUserController::class, 'store']);
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::resource('/pengaduan', PengaduanController::class);
+Route::resource('/tanggapan', TanggapanController::class);
 
