@@ -60,9 +60,9 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <!-- <a class="collapse-item" href="{{ url('/pengaduan/9') }}">Daftar Pengaduan</a> -->
             <a class="collapse-item" href="{{ url('/pengaduan') }}">Dashboard</a>
             <a class="collapse-item" href="{{ route('pengaduan.create') }}">Form Pengaduan</a>
+            <a class="collapse-item" href="{{ url('/umum') }}">Data Sekitarmu</a>
 
 
           </div>
@@ -86,7 +86,10 @@
 
       <!-- Nav Item - Login -->
       <!-- <li class="nav-item">
-        <a class="nav-link" href="/logout">
+        <form action="/logout" method="post">
+        <a class="nav-link" href="/">
+
+        </form>
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Logout</span></a>
       </li> -->

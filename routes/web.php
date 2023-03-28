@@ -6,6 +6,13 @@ use App\Http\Controllers\RegistrasiUserController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\TanggapanController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\IndexAdminController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\KondisiController;
+
+
+
 use Illuminate\Auth\Events\Logout;
 
 
@@ -38,4 +45,14 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::resource('/pengaduan', PengaduanController::class);
 Route::resource('/tanggapan', TanggapanController::class);
+
+Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/index', [IndexAdminController::class, 'index']);
+
+Route::resource('/umum', KondisiController::class);
+
+
+
+Route::post('/generate-pdf', [LaporanController::class, 'generatePDF'])->name('generate-pdf');
+
 

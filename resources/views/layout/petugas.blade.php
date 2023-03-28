@@ -30,7 +30,7 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-text mx-3">Administrator</div>
+        <div class="sidebar-brand-text mx-3">Petugas</div>
       </a>
 
       <!-- Divider -->
@@ -47,20 +47,22 @@
       <hr class="sidebar-divider">
 
       <!-- Heading -->
-
+      <div class="sidebar-heading">
+        Data
+      </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        {{-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
           <span>Data Dasar</span>
-        </a> --}}
-        {{-- <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="">Daftar Pengaduan</a>
 
           </div>
-        </div> --}}
+        </div>
       </li>
 
       <!-- Divider -->
@@ -73,22 +75,17 @@
 
        <!-- Nav Item - Register -->
        <li class="nav-item">
-        <a class="nav-link" href="/index">
+        <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
-          <span>Laporan</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/register">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Register Petugas</span></a>
+          <span>Register</span></a>
       </li>
 
       <!-- Nav Item - Login -->
-      {{-- <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="charts.html">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Logout</span></a>
-      </li> --}}
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

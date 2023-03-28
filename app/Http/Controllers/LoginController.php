@@ -25,12 +25,11 @@ class LoginController extends Controller
             $request->session()->regenerate();
             if(Auth::user()->level == 'user') {
                 return redirect()->intended('/pengaduan')->with('success', 'Login Success!'); 
-            }elseif (Auth::user()->level == 'petugas' || 'admin') {
-                return redirect()->intended('/petugas')->with('success', 'Login Success!');
+            }elseif (Auth::user()->level == 'petugas') {
+                return redirect()->intended('/tanggapan')->with('success', 'Login Success!');
+            }elseif (Auth::user()->level == 'admin') {
+                return redirect()->intended('/admin')->with('success', 'Login Success');
             }
-            
-            // return redirect()->intended('/pengaduan')->with('success', 'Login Success!');          
-        
         }
 
         return back()->with('loginError', 'Login Failed!');

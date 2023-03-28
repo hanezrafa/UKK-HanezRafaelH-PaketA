@@ -19,7 +19,7 @@
   <body>
     <nav class="navbar navbar-expand-lg" style="background-color:#fc7703;">
         <div class="container">
-            <a class="navbar-brand" style="color:black;">Selamat Datang di Pengaduan Masyarakat Desa Sukawarna</a>
+            <a class="navbar-brand" style="color:black;">Halaman Registrasi Petugas</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

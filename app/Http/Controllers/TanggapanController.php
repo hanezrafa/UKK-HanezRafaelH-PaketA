@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tanggapan;
+use App\Models\Pengaduan;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
 
 class TanggapanController extends Controller
@@ -14,7 +18,8 @@ class TanggapanController extends Controller
      */
     public function index()
     {
-        //
+        $pengaduan = Pengaduan::all();
+        return view('petugas.index', compact('pengaduan'));
     }
 
     /**
@@ -35,7 +40,21 @@ class TanggapanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'tanggapan' => 'required',
+            'id_pengaduan' => 'required'
+        ]);
+
+        $validate['tgl_tanggapan'] = date("Y-m-d");
+        $validate['id_petugas'] = Auth::user()->id;
+
+        Tanggapan::create($validate);
+
+        $data['status'] = 'selesai';
+        $pengaduan = Pengaduan::where('id_pengaduan', $validate['id_pengaduan'])->update($data);
+
+        return redirect('/tanggapan')->with('success', 'Update Status Berhasil');
+
     }
 
     /**
@@ -44,9 +63,10 @@ class TanggapanController extends Controller
      * @param  \App\Models\Tanggapan  $tanggapan
      * @return \Illuminate\Http\Response
      */
-    public function show(Tanggapan $tanggapan)
+    public function show($id)
     {
-        //
+        $pengaduan = Pengaduan::find($id);
+        return view('petugas.edit', compact('pengaduan'));
     }
 
     /**
@@ -80,6 +100,9 @@ class TanggapanController extends Controller
      */
     public function destroy(Tanggapan $tanggapan)
     {
-        //
+        $pengaduan->delete();
+     
+        return redirect('/tanggapan')
+                        ->with('success','Berhasil Hapus !');
     }
 }
